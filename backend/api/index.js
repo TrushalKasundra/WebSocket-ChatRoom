@@ -9,7 +9,7 @@ app.use(cors());
 
 
 
-const allowedOrigins = "http://localhost:5252";
+const allowedOrigins = process.env.ORIGIN_URL ? process.env.ORIGIN_URL.split(",") : ["http://localhost:3000"];
 const io = new Server(server, {
     cors: {
         origin: allowedOrigins,
