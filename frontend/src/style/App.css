@@ -1,0 +1,170 @@
+@import "./connectionManager.css";
+
+
+.wrapper{
+  display:flex ;
+  align-items: center;
+  justify-content:center ;
+  width: 100%;
+}
+
+.wrapper .join_room, .wrapper .chat{
+  background-color: aquamarine;
+  margin: 1rem;
+  padding: 1rem;
+  align-content: center;
+}
+
+.wrapper .chat {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80%;
+  padding: 2rem 2.5rem;
+}
+
+.chat-title {
+  margin: 0;
+}
+
+.wrapper .chat .messageList {
+  height: 22rem;
+  background-color: aliceblue;
+  margin-bottom: 0;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.wrapper .chat form {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.chat form input {
+  flex: 1;
+  height: 42px;
+  padding: 0 10px;
+  border: 1px solid rgb(78, 78, 73);
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.chat form button {
+  height: 42px;
+  width: 80px;
+  font-size: 1rem;
+  background-color: rgb(127, 19, 229);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(105, 10, 195);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+
+.wrapper .join_room {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 2.5rem;
+  min-width: 420px;
+
+  .join_room-title {
+    margin: 0;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid rgb(78, 78, 73);
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .join_room-url {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    color: #333;
+    word-break: break-all;
+  }
+
+  .join_room-btn {
+    width: 160px;
+    height: 42px;
+    font-size: 1rem;
+    background-color: rgb(127, 19, 229);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(105, 10, 195);
+    }
+  }
+}
+.messageList{
+  padding: 0;
+  overflow:auto;
+}
+.message-user-box{
+  display: flex;
+  justify-content: flex-end; /* Align to the right */
+  line-break: anywhere;
+}
+.message-other-box{
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  line-break: anywhere;
+}
+.messageList .message-user{
+  width:50%;
+  max-width: 80%;
+  margin: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  background-color: rgb(167, 238, 167);
+  border-radius: 8px 0 8px 8px;
+}
+.messageList .message-user::before {
+  border-bottom: 10px solid var(--logoBlue);
+  right: -8px;
+  content: "";
+  height: 10px;
+  width:8px
+}
+.messageList .message-other{
+  width:50%;
+  max-width: 80%;
+  margin: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  background-color: rgb(228, 238, 200);
+  border-radius: 0 8px 8px 8px;
+}
+.messageList .message-other::before {
+  border-bottom: 10px solid var(--logoBlue);
+  right: -8px;
+  content: "";
+  height: 10px;
+  width:8px
+}
+.message-other .author{
+  opacity: 50%;
+}
