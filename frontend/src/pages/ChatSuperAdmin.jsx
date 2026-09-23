@@ -3,12 +3,15 @@ import { socket } from '../socket';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import { useLocation } from 'react-router-dom';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import useChatMessages from '../hooks/chatMessages';
 
 
 const ChatSuperAdmin = ({ userName }) => {
     const [currentMessage, setCurrentMessage] = useState("");
-    const [messageList, setMessageList] = useState([]);
+    const { messageList, setMessageList } = useChatMessages();
     const [disable, setDisable] = useState(false);
+
+    console.log("messageList", messageList)
 
     const location = useLocation(); 
 
@@ -46,6 +49,7 @@ const ChatSuperAdmin = ({ userName }) => {
             setDisable(false)
         }
     };
+
 
     useEffect(() => {
         const handleReceiveMsg = (data) => {

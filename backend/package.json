@@ -2,19 +2,22 @@
   "name": "websocket-chatroom-backend",
   "version": "1.0.0",
   "description": "WebSocket ChatRoom backend server using Express and Socket.IO",
-  "main": "api/index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node api/index.js"
+    "start": "nodemon src/index.js"
   },
   "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cores": "^0.8.5",
-    "cors": "^2.8.5",
-    "express": "^4.21.1",
-    "nodemon": "^3.1.7",
-    "socket.io": "^4.8.0"
+    "cores": "0.8.5",
+    "cors": "2.8.5",
+    "dotenv": "18.0.2",
+    "express": "4.21.1",
+    "mongoose": "9.10.1",
+    "node-cron": "^3.0.3",
+    "nodemon": "3.1.14",
+    "socket.io": "4.8.0"
   }
 }

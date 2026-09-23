@@ -1,36 +1,24 @@
-import express from 'express'
-import cors from 'cors'
-import { Server } from 'socket.io'
-import http from 'http'
+import { chatModel } from "../Models/chat.model.js";
+import { usersModel } from "../Models/users.model.js";
 
-const app = express();
-const server = http.createServer(app);
-app.use(cors());
-
-
-
-const allowedOrigins = process.env.ORIGIN_URL ? process.env.ORIGIN_URL.split(",") : ["http://localhost:3000"];
-const io = new Server(server, {
-    cors: {
-        origin: allowedOrigins,
-        methods: ["GET", "PUT"],
-    },
-});
-
+const socketIo = (io) => {
 io.on('connection', (socket) => {
-    console.log("socket connected", socket.id)
     // You can also handle disconnection
 
     socket.on("join_room", (data) => {
         socket.join(data);
+        usersModel.insertOne({name: "superAdmin", role: "admin", socketId: socket.id, room: data});
         console.log(`User ID :- ${socket.id} joined room : ${data}`)
     })
     socket.on("send_message", (data) => {
         console.log("send message data ", data)
+        chatModel.insertOne({room: data.room, message: data.message, author: data.author});
         socket.to(data.room).emit("receive_message", data)
     })
     socket.on("join_response", (data) => {
+            console.log("join_response data ", data)
         if (data.answer === "yes"){
+            usersModel.insertOne({name: data.data.name, role: "user", socketId: data.data.socket, room: data.data.room});
             io.to(data.data.socket).emit("join_response_answer",data)
         } else {
             io.to(data.data.socket).emit("join_response_answer",data)
@@ -49,9 +37,6 @@ io.on('connection', (socket) => {
     });
 });
 
-app.get("/", (req, res) => {
-  res.json({ message: "Server is running" });
-});
+}
 
-
-server.listen(8080, () => console.log("Server is running on port 8080"));
+export default socketIo;

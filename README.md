@@ -18,6 +18,10 @@ WebSocket-ChatRoom/
 - Join request / approval flow for private rooms
 - Instant message delivery using `socket.io-client`
 
+## Data Retention
+
+All data stored in the database (chat messages and user sessions) is valid for **24 hours**. A scheduled cron job runs every day at midnight and truncates both the `Chat` and `Users` collections, so no data persists beyond a single day.
+
 ## Tech Stack
 
 | Layer    | Tech                          |

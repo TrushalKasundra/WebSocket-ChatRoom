@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { socket } from '../socket';
 import { useLocation } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
+import useChatMessages from '../hooks/chatMessages';
 
 const ChatUser = () => {
     const [currentMessage, setCurrentMessage] = useState("");
     const [username, setusername] = useState("");
     const [requserAccepted, setrequserAccepted] = useState(false);
-    const [messageList, setMessageList] = useState([]);
+    const {messageList, setMessageList} = useChatMessages();
     const [disable, setDisable] = useState(false);
     const location = useLocation();
     const room = location.pathname.replace("/", "");
@@ -87,22 +88,6 @@ const ChatUser = () => {
     useEffect(()=>{
         //
     },[userName])
-
-    //   const containRef = useRef(null)
-
-    //   useEffect(() => {
-    //     containRef.current.scrollTop = containRef.current.scrollHeight;
-    //   }, [messageList])
-
-    // useEffect(() => {
-    //     const onFooEvent = (value) => {
-    //         setFooEvents(fooEvents.concat(value))
-    //     }
-    //     socket.on('foo', onFooEvent);
-    //     return () => {
-    //         socket.off('foo', onFooEvent);
-    //     };
-    // }, [fooEvents]);
 
     return (
         <div className='wrapper'>
