@@ -11,12 +11,10 @@ io.on('connection', (socket) => {
         console.log(`User ID :- ${socket.id} joined room : ${data}`)
     })
     socket.on("send_message", (data) => {
-        console.log("send message data ", data)
         chatModel.insertOne({room: data.room, message: data.message, author: data.author});
         socket.to(data.room).emit("receive_message", data)
     })
     socket.on("join_response", (data) => {
-            console.log("join_response data ", data)
         if (data.answer === "yes"){
             usersModel.insertOne({name: data.data.name, role: "user", socketId: data.data.socket, room: data.data.room});
             io.to(data.data.socket).emit("join_response_answer",data)
