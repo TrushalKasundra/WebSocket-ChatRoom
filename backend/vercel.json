@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/src/config/cleanUp.js",
-      "schedule": "28 7 * * *"
+      "schedule": "0 8 * * *"
     }
   ]
 }
