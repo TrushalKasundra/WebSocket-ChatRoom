@@ -6,7 +6,7 @@ import connectDB from './config/db.js';
 import 'dotenv/config';
 import socketIo from './socketIo/socketIo.js';
 import { chatMessages } from './controller/chat.controller.js';
-import { cronJob } from './config/cronJob.js';
+import { cronJob } from './config/cleanUp.js';
 
 const app = express();
 const server = http.createServer(app);
