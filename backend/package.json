@@ -16,7 +16,6 @@
     "dotenv": "18.0.2",
     "express": "4.21.1",
     "mongoose": "9.10.1",
-    "node-cron": "^3.0.3",
     "nodemon": "3.1.14",
     "socket.io": "4.8.0"
   }
