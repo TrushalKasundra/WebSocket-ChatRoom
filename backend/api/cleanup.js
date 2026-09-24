@@ -10,6 +10,12 @@ export default async function handler(req, res) {
         });
     }
 
+    // Only allow Vercel cron requests — reject everything else
+    const authHeader = req.headers['authorization'];
+    if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+        return res.status(401).json({ message: 'Unauthorized' });
+    }
+
     try {
         await connectDB(process.env.MONGOOSE_URL);
 
