@@ -1,6 +1,6 @@
 
-import { chatModel } from '../models/chatModel.js';
-import { usersModel } from '../models/usersModel.js';
+import { chatModel } from '../models/chat.model.js';
+import { usersModel } from '../models/users.model.js';
 
 export default async function handler(req, res) {
     if (req.method !== 'GET') {

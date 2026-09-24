@@ -1,5 +1,5 @@
-import { chatModel } from "../Models/chat.model.js";
-import { usersModel } from "../Models/users.model.js";
+import { chatModel } from "../models/chat.model.js";
+import { usersModel } from "../models/users.model.js";
 
 const socketIo = (io) => {
 io.on('connection', (socket) => {

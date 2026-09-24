@@ -6,7 +6,6 @@ import connectDB from './config/db.js';
 import 'dotenv/config';
 import socketIo from './socketIo/socketIo.js';
 import { chatMessages } from './controller/chat.controller.js';
-import { cronJob } from './config/cleanUp.js';
 
 const app = express();
 const server = http.createServer(app);
@@ -33,8 +32,6 @@ socketIo(io);
 connectDB(process.env.MONGOOSE_URL);
 
 app.post('/api/chat', chatMessages);
-
-cronJob();
 
 app.get("/", (req, res) => {
   res.json({ message: "Server is running" });
